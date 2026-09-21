@@ -46,7 +46,7 @@ module.exports = async function handler(req, res) {
           Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "openai/gpt-oss-20b",
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: pergunta },
@@ -60,7 +60,9 @@ module.exports = async function handler(req, res) {
     if (!resposta.ok) {
       const detalhe = await resposta.text();
       console.error("Erro da Groq:", detalhe);
-      res.status(502).json({ erro: "Erro ao consultar a IA." });
+      // DEBUG TEMPORÁRIO: mostra o motivo real na tela.
+      // Depois que resolver, volte para: res.status(502).json({ erro: "Erro ao consultar a IA." });
+      res.status(502).json({ erro: "Erro ao consultar a IA.", detalhe });
       return;
     }
 
