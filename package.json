@@ -1,0 +1,7 @@
+{
+  "name": "capivara-chatbot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chatbot especialista em capivaras, hospedado na Vercel",
+  "main": "index.js"
+}
